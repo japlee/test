@@ -57,7 +57,7 @@ int max_subList(int a[], int n)
         temp_sum += a[i];
         if(temp_sum > max)
             max = temp_sum;
-        else if(temp_sum < 0)
+        else if(temp_sum <= 0)
             temp_sum = 0;
     }
     return max;
