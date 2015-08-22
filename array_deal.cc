@@ -21,6 +21,33 @@ int delete_v(int a[], int n, int v)
     return (k - 1);
 }
 
+// judge in the length N array, if has the duplicate
+// number between 1..N-1
+// if has, return 0; if no has, return -1
+int judge_duplicate(int a[], int n)
+{
+    int i = 0, swap = 0;
+
+    while(i < n)
+    {
+        if(a[i] == (i + 1))
+            i++;
+        else
+        {
+            if(a[i] == a[a[i] - 1])
+                return 0;
+            else
+            {
+                swap = a[a[i] - 1];
+                a[a[i] - 1] = a[i];
+                a[i] = swap;
+            }
+        }
+    }
+
+    return -1;
+}
+
 int main()
 {
     int a[] = {1,2,3,4,5,6,7,5};
