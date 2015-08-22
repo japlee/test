@@ -48,6 +48,21 @@ int judge_duplicate(int a[], int n)
     return -1;
 }
 
+// calc the max sub list, using dynamic programming
+int max_subList(int a[], int n)
+{
+    int i, max = 0, temp_sum = 0;
+    for(i = 0; i < n; ++i)
+    {
+        temp_sum += a[i];
+        if(temp_sum > max)
+            max = temp_sum;
+        else if(temp_sum < 0)
+            temp_sum = 0;
+    }
+    return max;
+}
+
 int main()
 {
     int a[] = {1,2,3,4,5,6,7,5};
