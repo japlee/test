@@ -1,81 +1,94 @@
- 
- <table cellspacing="0" cellpadding="0"> 
-  <tbody> 
-   <tr> 
-    <td>&nbsp;</td> 
-    <td><strong>GB200 NVL72</strong></td> 
-    <td><strong>GB200 Grace Blackwell Superchip</strong></td> 
-   </tr> 
-   <tr> 
-    <td>Configuration</td> 
-    <td>36 Grace CPU : 72 Blackwell GPUs</td> 
-    <td>1 Grace CPU : 2 Blackwell GPU</td> 
-   </tr> 
-   <tr> 
-    <td>FP4 Tensor Core<sup>1</sup></td> 
-    <td>1,440 PFLOPS</td> 
-    <td>40 PFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>FP8/FP6 Tensor Core<sup>1</sup></td> 
-    <td>720 PFLOPS</td> 
-    <td>20 PFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>INT8 Tensor Core<sup>1</sup></td> 
-    <td>720 POPS</td> 
-    <td>20 POPS</td> 
-   </tr> 
-   <tr> 
-    <td>FP16/BF16 Tensor Core<sup>1</sup></td> 
-    <td>360 PFLOPS</td> 
-    <td>10 PFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>TF32 Tensor Core</td> 
-    <td>180 PFLOPS</td> 
-    <td>5 PFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>FP32</td> 
-    <td>5,760 TFLOPS</td> 
-    <td>160 TFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>FP64</td> 
-    <td>2,880 TFLOPS</td> 
-    <td>80 TFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>FP64 Tensor Core</td> 
-    <td>2,880 TFLOPS</td> 
-    <td>80 TFLOPS</td> 
-   </tr> 
-   <tr> 
-    <td>GPU Memory | Bandwidth</td> 
-    <td>Up to 13.4 TB HBM3e | 576 TB/s</td> 
-    <td>Up to 372 GB HBM3e | 16 TB/s</td> 
-   </tr> 
-   <tr> 
-    <td>NVLink Bandwidth</td> 
-    <td>130 TB/s</td> 
-    <td>3.6 TB/s</td> 
-   </tr> 
-   <tr> 
-    <td>CPU Core Count</td> 
-    <td>2,592 Arm® Neoverse V2 cores</td> 
-    <td>72 Arm Neoverse V2 cores</td> 
-   </tr> 
-   <tr> 
-    <td>CPU Memory | Bandwidth</td> 
-    <td>Up to 17 TB LPDDR5X | Up to 18.4 TB/s</td> 
-    <td>Up to 480 GB LPDDR5X | Up to 512 GB/s</td> 
-   </tr> 
-   <tr> 
-    <td colspan="3">
-     <div class="description p--small spec-table-GB200-legal"> 
-      <p>1. With sparsity.</p> 
-     </div></td> 
-   </tr> 
-  </tbody> 
- </table> 
+下面给出一段可直接粘贴使用的 **“一页式产品展示模板”**，它沿用你当前的站点 CSS/Bootstrap 框架，并把上一步提取出的 H100 规格表嵌进来。  
+如已完成前述「CSS 合并」步骤，只要在头部引入 `css/style.css` 即可；如无，则保留原多文件引用。其余均为内联内容，方便你二次加工。  
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>NVIDIA H100 GPU</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- 若已合并为单一 CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- 如未合并，按需保留原来的分开引用写法：
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/public.css" rel="stylesheet">
+  <link href="css/page.css" rel="stylesheet">
+  <link href="css/mb.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  -->
+
+  <link rel="icon" href="images/favicon.ico">
+</head>
+
+<body>
+  <!-- Hero Banner -->
+  <section class="nvidia-banner text-center text-white py-5">
+    <div class="container">
+      <h1 data-aos="fade-down" class="fw-bold">NVIDIA H100 Tensor Core GPU</h1>
+      <p data-aos="fade-up" class="lead">Next-Generation Hopper Architecture for AI & HPC</p>
+    </div>
+  </section>
+
+  <!-- 规格对比表 -->
+  <section class="cs-specs py-5">
+    <div class="container">
+      <h2 class="text-center mb-4">Product Specifications</h2>
+
+      <div class="table-responsive scrolling">
+        <table id="tab-h100" class="table table-bordered align-middle text-center">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">H100 SXM</th>
+              <th scope="col">H100 NVL</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <!-- 自填充 -->
+            <tr><th scope="row">FP64</th><td>34 teraFLOPS</td><td>30 teraFLOPS</td></tr>
+            <tr><th scope="row">FP64 Tensor&nbsp;Core</th><td>67 teraFLOPS*</td><td>60 teraFLOPS*</td></tr>
+            <tr><th scope="row">FP32</th><td>67 teraFLOPS</td><td>60 teraFLOPS</td></tr>
+            <tr><th scope="row">TF32 Tensor&nbsp;Core</th><td>989 teraFLOPS*</td><td>835 teraFLOPS*</td></tr>
+            <tr><th scope="row">BFLOAT16 Tensor&nbsp;Core</th><td>1,979 teraFLOPS*</td><td>1,671 teraFLOPS*</td></tr>
+            <tr><th scope="row">FP16 Tensor&nbsp;Core</th><td>1,979 teraFLOPS*</td><td>1,671 teraFLOPS*</td></tr>
+            <tr><th scope="row">FP8 Tensor&nbsp;Core</th><td>3,958 teraFLOPS*</td><td>3,341 teraFLOPS*</td></tr>
+            <tr><th scope="row">INT8 Tensor&nbsp;Core</th><td>3,958 TOPS*</td><td>3,341 TOPS*</td></tr>
+            <tr><th scope="row">GPU&nbsp;Memory</th><td>80 GB</td><td>94 GB</td></tr>
+            <tr><th scope="row">GPU Memory Bandwidth</th><td>3.35 TB/s</td><td>3.9 TB/s</td></tr>
+            <tr><th scope="row">Decoders&nbsp;(NVDEC/JPEG)</th><td>7 / 7</td><td>7 / 7</td></tr>
+            <tr><th scope="row">Max&nbsp;TDP&nbsp;(configurable)</th><td>Up to 700 W</td><td>350 – 400 W</td></tr>
+            <tr><th scope="row">MIG&nbsp;(per GPU)</th><td>7 × 10 GB</td><td>7 × 12 GB</td></tr>
+            <tr><th scope="row">Form&nbsp;Factor</th><td>SXM</td><td>PCIe dual-slot air-cooled</td></tr>
+            <tr><th scope="row">Interconnect</th><td>NVLink 900 GB/s<br>PCIe Gen5 128 GB/s</td>
+              <td>NVLink 600 GB/s<br>PCIe Gen5 128 GB/s</td></tr>
+            <tr><th scope="row">Server&nbsp;Options</th>
+              <td>NVIDIA HGX&nbsp;H100&nbsp;systems<br> NVIDIA&nbsp;DGX H100&nbsp;8x&nbsp;GPUs</td>
+              <td>Partner & NVIDIA-Certified systems<br>1–8 GPUs</td></tr>
+            <tr><th scope="row">NVIDIA&nbsp;AI&nbsp;Enterprise</th><td>Add-on</td><td>Included</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="legal mt-2 text-muted">* with sparsity</p>
+    </div>
+  </section>
+
+  <!-- 动画脚本 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ once: true });
+  </script>
+</body>
+</html>
+```
+
+使用说明  
+1. 将文件保存为 `index.html` 并在同级目录放上合并后的 `css/style.css` 或保留原始文件路径。  
+2. 需要响应式时，`mb.css` 已包含的媒体查询会一并生效，确保它最后加载。  
+3. 无需额外改动即可直接 `GET` 浏览；如需增删区块或改样式，可在 `page.css` 或 `public.css` 中继续扩展。
