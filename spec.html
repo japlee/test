@@ -1,150 +1,68 @@
-下面是一份**完整的单文件模板**（页面+样式+内容一次性解决）。  
-直接把下面代码保存成 `index.html`，即可在任何现代浏览器里本地打开，内已包含：  
-- Bootstrap 5、Bootstrap-Icons、AOS、Animate.css 的 CDN 版本（启动速度快）；  
-- 把 H100 的 JSON 规格实时渲染为响应式表格；  
-- 三段主体布局：Hero Banner → 标题描述 → 规格表格；  
-- 一个最小化的 `custom.css` 片段放在 `<style>` 内，行内注释足够清晰，方便后期迁移到独立文件。  
-
-```html
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>NVIDIA H100 GPU</title>
-
-  <!-- ==== 外部依赖 (CDN) ‑ 生产环境可改本地 ==== -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <meta charset="utf-8">
+  <title>GB300 NVL72 Product Brief</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="images/favicon.ico">
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+  <link href="bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="css/public.css" rel="stylesheet">
+  <link href="css/page.css" rel="stylesheet">
+  <link href="css/mb.css" rel="stylesheet">
+  <link href="css/animate.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
-  <!-- ==== 法规人可用的收藏夹图标 ==== -->
-  <link rel="icon" href="images/favicon.ico"/>
-
-  <!-- ==== 所有自定义样式集中在此（后续可迁到 css/custom.css） ==== -->
   <style>
-    /* ------- 通用自定义变量 -------- */
-    :root{
-      --nv-green:#76b900;
-      --nv-dark:#111;
-    }
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;background:#111;color:#fefefe;}
-
-    /* ------- Hero 横幅 ------- */
-    .nv-hero{
-      position:relative;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:url('https://images.nvidia.com/p/hopper-microchip-h100.jpg') center/cover no-repeat;
-    }
-    .nv-hero::before{
-      content:'';
-      position:absolute;
-      inset:0;
-      background:rgba(0,0,0,.65);
-    }
-    .nv-hero .hero-content{position:relative;z-index:2;text-align:center;}
-    .nv-hero h1{font-size:4rem;font-weight:700;line-height:1.2;}
-    .nv-hero h1 span{color:var(--nv-green);}
-    @media(max-width:768px){.nv-hero h1{font-size:2.5rem;}}
-
-    /* ------- 规格表格样式（复用官方类名） ------- */
-    .h100-specs.table thead th{background:#0c0c0c;color:#fafafa;border:none;}
-    .h100-specs.table td,
-    .h100-specs.table th{border:none;}
-    .h100-specs td:nth-child(odd){background:#1a1a1a;}
-    .h100-specs td:nth-child(even){background:#222;}
-    .h100-specs tr:nth-child(n+2) td{border-bottom:1px solid #333;}
-    .h100-specs .light{color:var(--nv-green);}
-    .legal{font-size:.8rem;color:#999;}
-    /* 让表格可以横向滚动（移动） */
-    .table-container{overflow-x:auto;}
+    body{background:#111;color:#fafafa;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;}
+    .hero{background:url('https://images.nvidia.com/p/blackwell-microchip.jpg') center/cover no-repeat;position:relative;text-align:center;min-height:100vh;display:flex;align-items:center;justify-content:center;}
+    .hero::before{content:'';inset:0;background:rgba(0,0,0,.55);position:absolute;}
+    .hero .hero-content{position:relative;z-index:2;}
+    .hero h1{font-size:3.2rem;font-weight:700}.hero h1 span{color:#76b900}
+    .section-title{color:#76b900;font-weight:700;margin-bottom:1rem;}
+    .table-container{overflow-x:auto}
+    .specs-table.table th{background:#0c0c0c;border:none}
+    .specs-table.table td,.specs-table.table th{vertical-align:middle;border:none;border-bottom:1px solid #2c2c2c}
+    .specs-table.table tbody tr:nth-child(odd){background:#181818}.specs-table.table tbody tr:nth-child(even){background:#151515}
+    .legal{font-size:.73rem;color:#888;margin-top:.5rem}
+    @media(max-width:768px){.hero h1{font-size:2.25rem}}
   </style>
 </head>
 <body>
+  <section class="hero animate__animated animate__fadeIn"><div class="hero-content" data-aos="zoom-in">
+    <h1>GB300 <span>NVL72</span></h1><p class="fs-5">Next-generation AI SuperChip superpod specifications</p>
+  </div></section>
 
-<!-- ================== HERO 区域 ================== -->
-<section class="nv-hero animate__animated animate__fadeIn">
-  <div class="hero-content" data-aos="zoom-in">
-    <h1>NVIDIA <span>H100</span> Product Brief</h1>
-    <p class="fs-5 mb-4">Explore the full range of H100 SXM / NVL specifications</p>
-    <a href="#specs" class="btn btn-success btn-lg rounded-pill">
-      <i class="bi bi-speedometer2"></i>&nbsp; View Specs
-    </a>
-  </div>
-</section>
-
-<!-- ================== 规格区域 ================== -->
-<section id="specs" class="py-5">
-  <div class="container">
-    <h2 class="fw-bold text-center mb-4" data-aos="fade-up">
-      Product Specifications
-    </h2>
-
-    <div class="table-container table-dark">
-      <table class="table h100-specs text-nowrap mb-0">
-        <thead>
-          <tr>
-            <th></th>
-            <th>H100 SXM</th>
-            <th>H100 NVL</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+  <section class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center" data-aos="fade-up">Specifications</h2>
+      <div class="table-container">
+        <table class="table specs-table" data-aos="fade-up" data-aos-delay="200">
+          <thead>
+            <tr><th>Parameter</th><th>Value</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Configuration</td><td>72 NVIDIA&nbsp;Blackwell&nbsp;Ultra&nbsp;GPUs,&nbsp;36&nbsp;NVIDIA&nbsp;Grace&nbsp;CPUs</td></tr>
+            <tr><td>NVLink&nbsp;Bandwidth</td><td>130 TB/s</td></tr>
+            <tr><td>Fast&nbsp;Memory</td><td>Up&nbsp;to&nbsp;40&nbsp;TB</td></tr>
+            <tr><td>GPU&nbsp;Memory&nbsp;&#124;&nbsp;Bandwidth</td><td>Up&nbsp;to&nbsp;21&nbsp;TB&nbsp;&#124;&nbsp;576&nbsp;TB/s</td></tr>
+            <tr><td>CPU&nbsp;Memory&nbsp;&#124;&nbsp;Bandwidth</td><td>Up&nbsp;to&nbsp;18&nbsp;TB&nbsp;SOCAMM&nbsp;LPDDR5X&nbsp;&#124;&nbsp;14.3&nbsp;TB/s</td></tr>
+            <tr><td>CPU&nbsp;Core&nbsp;Count</td><td>2,592&nbsp;Arm&nbsp;Neoverse&nbsp;V2&nbsp;cores</td></tr>
+            <tr><td>FP4&nbsp;Tensor&nbsp;Core*</td><td>1,400&nbsp;&#124;&nbsp;1,100²&nbsp;PFLOPS</td></tr>
+            <tr><td>FP8/FP6&nbsp;Tensor&nbsp;Core*</td><td>720&nbsp;PFLOPS</td></tr>
+            <tr><td>INT8&nbsp;Tensor&nbsp;Core*</td><td>23&nbsp;PFLOPS</td></tr>
+            <tr><td>FP16/BF16&nbsp;Tensor&nbsp;Core*</td><td>360&nbsp;PFLOPS</td></tr>
+            <tr><td>TF32&nbsp;Tensor&nbsp;Core*</td><td>180&nbsp;PFLOPS</td></tr>
+            <tr><td>FP32</td><td>6&nbsp;PFLOPS</td></tr>
+            <tr><td>FP64&nbsp;&#124;&nbsp;FP64&nbsp;Tensor&nbsp;Core*</td><td>100&nbsp;TFLOPS</td></tr>
+          </tbody>
+        </table>
+        <p class="text-center legal">All Tensor Core figures with sparsity unless stated.</p>
+      </div>
     </div>
+  </section>
 
-    <p class="text-center legal mt-3">
-      * TeraFLOPS / TOPS with sparsity | Source: nvidia.com, last update 2023 Q3
-    </p>
-  </div>
-</section>
-
-<!-- ================== 脚本 ================== -->
-<script>
-  /* -------- 用 JSON 渲染规格表 -------- */
-  const data={
-    "FP64":{"H100_SXM":"34 teraFLOPS","H100_NVL":"30 teraFLOPS"},
-    "FP64 Tensor Core*":{"H100_SXM":"67 teraFLOPS","H100_NVL":"60 teraFLOPS"},
-    "FP32":{"H100_SXM":"67 teraFLOPS","H100_NVL":"60 teraFLOPS"},
-    "TF32 Tensor Core*":{"H100_SXM":"989 teraFLOPS","H100_NVL":"835 teraFLOPS"},
-    "BFLOAT16 Tensor Core*":{"H100_SXM":"1,979 teraFLOPS","H100_NVL":"1,671 teraFLOPS"},
-    "FP16 Tensor Core*":{"H100_SXM":"1,979 teraFLOPS","H100_NVL":"1,671 teraFLOPS"},
-    "FP8 Tensor Core*":{"H100_SXM":"3,958 teraFLOPS","H100_NVL":"3,341 teraFLOPS"},
-    "INT8 Tensor Core*":{"H100_SXM":"3,958 TOPS","H100_NVL":"3,341 TOPS"},
-    "GPU Memory":{"H100_SXM":"80 GB","H100_NVL":"94 GB"},
-    "GPU Memory Bandwidth":{"H100_SXM":"3.35 TB/s","H100_NVL":"3.9 TB/s"},
-    "NVDEC / JPEG":{"H100_SXM":"7 / 7","H100_NVL":"7 / 7"},
-    "Max TDP":{"H100_SXM":"Up to 700 W","H100_NVL":"350-400 W"},
-    "MIG (per GPU)":{"H100_SXM":"7×10 GB","H100_NVL":"7×12 GB"},
-    "Form Factor":{"H100_SXM":"SXM","H100_NVL":"PCIe dual-slot"},
-    "Interconnect":{"H100_SXM":"NVLink 900 GB/s<br>PCIe Gen5 128 GB/s","H100_NVL":"NVLink 600 GB/s<br>PCIe Gen5 128 GB/s"},
-    "NVIDIA AI Enterprise":{"H100_SXM":"Optional Add-on","H100_NVL":"Included"}
-  };
-
-  const tbody=document.querySelector('.h100-specs tbody');
-  for (const [k,v] of Object.entries(data)){
-    tbody.insertAdjacentHTML('beforeend',`
-      <tr>
-        <th scope="row">${k}</th>
-        <td>${v.H100_SXM}</td>
-        <td>${v.H100_NVL}</td>
-      </tr>
-    `);
-  }
-</script>
-
-<!-- ==== 动画初始化 ==== -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({duration:700});</script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({duration:700})</script>
 </body>
 </html>
-```
-
-使用指南  
-1. 本地存为 `index.html`，双击即可预览。  
-2. 想迁移样式 → 把 `<style>` 中 `/* 所有自定义样式 */` 整段复制到 `css/custom.css`，然后在 `<head>` 里 `<link>` 指向即可。  
-3. 需要静态化 CDN 资源 → 通过 `wget` 把 Bootstrap/Icons/AOS/Animate 拉到本地同目录，即可完全离线运行。
