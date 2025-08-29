@@ -1,0 +1,156 @@
+以下示例是一份**可直接保存为 .html 文件并在浏览器中打开**的完整静态页面。  
+它复用了前面「网站模版」里出现的所有样式、动画与布局，同时将您刚才提取的 **H100 产品规格** 以响应式表格＋卡片的方式呈现。  
+（请将链接替换为您服务器上真实的文件路径即可）
+
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>NVIDIA H100 Product Specifications</title>
+
+    <!-- 样式部分 :: 全部沿用模版文件 -->
+    <link rel="icon" href="images/favicon.ico">
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="bootstrap/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/public.css" rel="stylesheet">
+    <link href="css/page.css" rel="stylesheet">
+    <link href="css/mb.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- 🔍 仅本页内联样式 :: 保持与模版一致 -->
+    <style>
+        #h100-specs table th,
+        #h100-specs table td{
+            text-align:center;
+            vertical-align:middle;
+            border-bottom:1px solid #dee2e6;
+        }
+        #h100-specs table th{
+            background:#000;
+            color:#fff;
+        }
+        @media(max-width:768px){
+            #h100-specs{overflow-x:auto;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- 顶部 Banner -->
+<section class="sec-banner nvidia-banner py-5">
+    <div class="container-md">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 data-aos="fade-down" class="yellow">NVIDIA H100</h1>
+                <p data-aos="fade-up" data-aos-delay="200">
+                    新一代 Hopper 架构旗舰数据中心 GPU，加速 AI、HPC 与大规模语言模型。
+                </p>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="images/h100_banner.png" alt="H100 Hero Image" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- 规格一览 -->
+<section class="cs-introduction module py-5">
+    <div class="container-md">
+
+        <div class="row text-center mb-5" data-aos="fade-up">
+            <h2 class="title">Product Specifications</h2>
+            <p class="sub-title">Both H100 SXM & H100 NVL at a glance</p>
+        </div>
+
+        <div class="h-100 w-100" id="h100-specs" data-aos="fade-up" data-aos-delay="200">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Spec Item</th>
+                        <th scope="col">H100 SXM</th>
+                        <th scope="col">H100 NVL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>FP64</td><td>34 teraFLOPS</td><td>30 teraFLOPs</td></tr>
+                    <tr><td>FP64 Tensor Core</td><td>67 teraFLOPS</td><td>60 teraFLOPs</td></tr>
+                    <tr><td>FP32</td><td>67 teraFLOPS</td><td>60 teraFLOPs</td></tr>
+                    <tr><td>TF32 Tensor Core*</td><td>989 teraFLOPS</td><td>835 teraFLOPs</td></tr>
+                    <tr><td>BFLOAT16 Tensor Core*</td><td>1,979 teraFLOPS</td><td>1,671 teraFLOPS</td></tr>
+                    <tr><td>FP16 Tensor Core*</td><td>1,979 teraFLOPS</td><td>1,671 teraFLOPS</td></tr>
+                    <tr><td>FP8 Tensor Core*</td><td>3,958 teraFLOPS</td><td>3,341 teraFLOPS</td></tr>
+                    <tr><td>INT8 Tensor Core*</td><td>3,958 TOPS</td><td>3,341 TOPS</td></tr>
+                    <tr><td>GPU Memory</td><td>80GB</td><td>94GB</td></tr>
+                    <tr><td>GPU Memory Bandwidth</td><td>3.35TB/s</td><td>3.9TB/s</td></tr>
+                    <tr><td>Decoders</td><td>7 NVDEC / 7 JPEG</td><td>7 NVDEC / 7 JPEG</td></tr>
+                    <tr><td>Max TDP</td><td>Up to 700 W (config.)</td><td>350–400 W (config.)</td></tr>
+                    <tr><td>Multi-Instance GPUs</td><td>Up to 7 MIGs @10 GB</td><td>Up to 7 MIGs @12 GB</td></tr>
+                    <tr><td>Form Factor</td><td>SXM</td><td>PCIe Dual-Slot / Air-Colled</td></tr>
+                    <tr><td>Interconnect</td><td>NVLink 900 GB/s | PCIe 128 GB/s</td><td>NVLink 600 GB/s | PCIe 128 GB/s</td></tr>
+                    <tr><td>Server Options</td><td>HGX / DGX with 4–8 GPUs</td><td>Partner systems 1–8 GPUs</td></tr>
+                    <tr><td>NVIDIA AI Enterprise</td><td>Add-on</td><td>Included</td></tr>
+                </tbody>
+            </table>
+            <p class="text-muted small text-center mt-2">* 表示启用稀疏加速功能</p>
+        </div>
+
+
+        <!-- 应用场景卡片 -->
+        <div class="row product-benefits mt-5 gy-4">
+            <div class="col-md-4">
+                <div class="group" data-aos="fade-up">
+                    <i class="bi bi-cpu" style="font-size:3rem;color:#76b900;"></i>
+                    <div class="bd">
+                        <h4 class="mt-3">极致 AI 性能</h4>
+                        <p class="text">FP8 Transformer Engine 为大模型带来 9× 提速。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="group" data-aos="fade-up" data-aos-delay="100">
+                    <i class="bi bi-wifi" style="font-size:3rem;color:#76b900;"></i>
+                    <div class="bd">
+                        <h4 class="mt-3">高带宽互联</h4>
+                        <p class="text">NVLink 900 GB/s，扩展多 GPU 无瓶颈。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="group" data-aos="fade-up" data-aos-delay="200">
+                    <i class="bi bi-cloud-arrow-up" style="font-size:3rem;color:#76b900;"></i>
+                    <div class="bd">
+                        <h4 class="mt-3">云-边灵活部署</h4>
+                        <p class="text">SXM / PCIe 双形态，同架构多种场景覆盖。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer 占位 -->
+<footer class="bg-dark text-white py-4">
+    <div class="container text-center">
+        © 2024 Your Company – Powered by NVIDIA
+    </div>
+</footer>
+
+
+<!-- 🔧 通用底部脚本 -->
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>AOS.init({ duration: 600, once: true });</script>
+</body>
+</html>
+```
+
+使用方法  
+1. 把整段代码保存为 `h100-specs.html`。  
+2. 将路径指向您服务器上的资源即可上线——无需额外修改模版，样式与动画完全一致。
