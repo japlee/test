@@ -1,73 +1,63 @@
-<!doctype html>
-<html lang="en"><head>
-<meta charset="utf-8">
-<title>GB300 NVL72 – Product Brief</title>
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="icon" href="images/favicon.ico">
-<link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-<link href="bootstrap/font/bootstrap-icons.css" rel="stylesheet">
-<link href="css/public.css" rel="stylesheet">
-<link href="css/page.css" rel="stylesheet">
-<link href="css/mb.css" rel="stylesheet">
-<link href="css/animate.css" rel="stylesheet">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-<style>
-:root{--brand:#76b900}
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;background:#0d0d0d;color:#f5f5f5}
-.hero{background:url('https://images.nvidia.com/p/blackwell-microchip.jpg')center/cover no-repeat;height:100vh;display:flex;align-items:center;justify-content:center;position:relative;text-align:center}
-.hero::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.6)}
-.hero-content{position:relative;z-index:1}
-.hero h1{font-size:3.2rem;font-weight:700;color:#fff}
-.hero h1 span{color:var(--brand)}
-.section-title{color:var(--brand);text-align:center;margin-bottom:2rem;font-size:2rem;font-weight:700}
-.table-wrap{overflow-x:auto;border-radius:6px}
-table{width:100%;background:#111;border-collapse:collapse;color:#e0e0e0}
-thead{background:#0a0a0a}
-th,td{padding:1rem;border-bottom:1px solid #222;font-size:.92rem}
-tbody tr:nth-child(odd){background:#151515}
-.legal{font-size:.65rem;text-align:center;margin-top:1rem;color:#777}
-@media(max-width:768px){.hero h1{font-size:2.2rem}}
-</style>
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NVIDIA H100 Specifications</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="css/nvidia-style.css" rel="stylesheet">
 </head>
 <body>
+    <section class="sec-banner nvidia-banner">
+        <div class="container-md text-center" data-aos="fade-up">
+            <h1>NVIDIA H100 Tensor Core GPU</h1>
+            <p>Accelerating the world’s AI infrastructure</p>
+        </div>
+    </section>
 
-<section class="hero">
-  <div class="hero-content" data-aos="zoom-in">
-    <h1>GB300 <span>NVL72</span></h1>
-    <p class="fs-5">Unleashing AI at Extreme Scale</p>
-  </div>
-</section>
+    <section class="module cs-specs">
+        <div class="container-md" data-aos="fade-up">
+            <h2 class="text-center mb-5">Product Specifications</h2>
+            <div class="table-responsive">
+                <table class="table table-bordered align-middle">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>Specification</th>
+                            <th>H100 SXM</th>
+                            <th>H100 NVL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>FP64</td><td>34 teraFLOPS</td><td>30 teraFLOPS</td></tr>
+                        <tr><td>FP64 Tensor Core</td><td>67 teraFLOPS</td><td>60 teraFLOPS</td></tr>
+                        <tr><td>FP32</td><td>67 teraFLOPS</td><td>60 teraFLOPS</td></tr>
+                        <tr><td>TF32 Tensor Core*</td><td>989 teraFLOPS</td><td>835 teraFLOPS</td></tr>
+                        <tr><td>BFLOAT16 Tensor Core*</td><td>1,979 teraFLOPS</td><td>1,671 teraFLOPS</td></tr>
+                        <tr><td>FP16 Tensor Core*</td><td>1,979 teraFLOPS</td><td>1,671 teraFLOPS</td></tr>
+                        <tr><td>FP8 Tensor Core*</td><td>3,958 teraFLOPS</td><td>3,341 teraFLOPS</td></tr>
+                        <tr><td>INT8 Tensor Core*</td><td>3,958 TOPS</td><td>3,341 TOPS</td></tr>
+                        <tr><td>GPU Memory</td><td>80 GB</td><td>94 GB</td></tr>
+                        <tr><td>GPU Memory Bandwidth</td><td>3.35 TB/s</td><td>3.9 TB/s</td></tr>
+                        <tr><td>Decoders</td><td>7 NVDEC<br>7 JPEG</td><td>7 NVDEC<br>7 JPEG</td></tr>
+                        <tr><td>Max TDP</td><td>Up to 700 W (configurable)</td><td>350-400 W (configurable)</td></tr>
+                        <tr><td>Multi-Instance GPUs</td><td>Up to 7 MIGs @ 10 GB</td><td>Up to 7 MIGs @ 12 GB</td></tr>
+                        <tr><td>Form Factor</td><td>SXM</td><td>PCIe dual-slot air-cooled</td></tr>
+                        <tr><td>Interconnect</td><td>NVLink 900 GB/s<br>PCIe Gen5 128 GB/s</td><td>NVLink 600 GB/s<br>PCIe Gen5 128 GB/s</td></tr>
+                        <tr><td>Server Options</td><td>NVIDIA HGX H100 & DGX H100</td><td>Partner & NVIDIA-Certified Systems</td></tr>
+                        <tr><td>NVIDIA AI Enterprise</td><td>Add-on</td><td>Included</td></tr>
+                    </tbody>
+                </table>
+                <p class="small text-muted">* With sparsity</p>
+            </div>
+        </div>
+    </section>
 
-<main class="py-5">
-  <div class="container">
-    <h2 class="section-title" data-aos="fade-up">Product Specifications</h2>
-    <div class="table-wrap">
-      <table data-aos="fade-up" data-aos-delay="200">
-        <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td>Configuration</td><td>72 NVIDIA Blackwell Ultra GPUs, 36 NVIDIA Grace CPUs</td></tr>
-          <tr><td>NVLink Bandwidth</td><td>130 TB/s</td></tr>
-          <tr><td>Fast Memory</td><td>Up to 40 TB</td></tr>
-          <tr><td>GPU Memory | Bandwidth</td><td>Up to 21 TB | 576 TB/s</td></tr>
-          <tr><td>CPU Memory | Bandwidth</td><td>Up to 18 TB SOCAMM LPDDR5X | 14.3 TB/s</td></tr>
-          <tr><td>CPU Core Count</td><td>2,592 Arm Neoverse V2 cores</td></tr>
-          <tr><td>FP4 Tensor Core*</td><td>1,400 | 1,100² PFLOPS</td></tr>
-          <tr><td>FP8/FP6 Tensor Core*</td><td>720 PFLOPS</td></tr>
-          <tr><td>INT8 Tensor Core*</td><td>23 PFLOPS</td></tr>
-          <tr><td>FP16/BF16 Tensor Core*</td><td>360 PFLOPS</td></tr>
-          <tr><td>TF32 Tensor Core*</td><td>180 PFLOPS</td></tr>
-          <tr><td>FP32</td><td>6 PFLOPS</td></tr>
-          <tr><td>FP64 / FP64 Tensor Core*</td><td>100 TFLOPS</td></tr>
-        </tbody>
-      </table>
-      <p class="legal">* Specifications are preliminary and subject to change; tensor performance includes sparsity unless noted otherwise.</p>
-    </div>
-  </div>
-</main>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init({duration:700});</script>
-
-</body></html>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>
+```
